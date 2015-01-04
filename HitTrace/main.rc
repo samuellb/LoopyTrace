@@ -1,0 +1,69 @@
+/*
+
+  Copyright (c) 2014-2015 Samuel Lidén Borell <samuel@kodafritt.se>
+ 
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+
+*/
+
+#include "resource.h"
+
+ID_MAINDLG DIALOGEX 0, 0, 225, 99
+CAPTION "LoopyTrace - Hit trace 0.1.0"
+STYLE WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU | DS_CENTER | DS_SHELLFONT
+FONT 8, "MS Shell Dlg"
+{
+    LTEXT "&Process:",       ID_PROCLABEL,  10,  11,  40, 10
+    EDITTEXT                 ID_PROCENTRY,  45,  10,  60, 12
+    LTEXT "(PID or name)",   ID_PROCHINT,  110,  11,  50, 10
+    
+    PUSHBUTTON "&Trace" ,    ID_ATTACH,    165,   9,  50, 14,  BS_DEFPUSHBUTTON
+    PUSHBUTTON "&Stop",      ID_DETACH,    165,  27,  50, 14
+    
+    /*LTEXT "Tracing:",        ID_TRCLABEL,  10,  32,  40, 10
+    AUTORADIOBUTTON "CALL",  ID_TRCCALL,   45,  32,  30, 10, WS_GROUP | WS_DISABLED // not implemented
+    AUTORADIOBUTTON "INT3",  ID_TRCINT3,   75,  32,  30, 10, WS_DISABLED
+    AUTORADIOBUTTON "Loop",  ID_TRCLOOP,  105,  32,  30, 10
+    AUTORADIOBUTTON "NX",    ID_TRCNX,    135,  32,  20, 10, WS_GROUP | WS_DISABLED*/
+    
+    // TODO implement extra functions in menu
+    //PUSHBUTTON ">",          ID_MENUBTN,   10,  52,  12, 11, BS_BOTTOM
+    //LTEXT "",                ID_HITS,      22,  53, 133, 10, SS_OWNERDRAW
+    LTEXT "",                ID_HITS,      10,  53, 145, 10, SS_OWNERDRAW
+    PUSHBUTTON "&Save",      ID_SAVE,     165,  51,  50, 14
+    
+    LTEXT "https://github.com/samuellb/loopytrace/\nThis is free software (MIT license)", ID_COPYRIGHT, 10,  70, 145, 20, SS_NOPREFIX
+    //LTEXT "", ID_COPYRIGHT, 10,  70, 145, 20, SS_NOPREFIX
+    PUSHBUTTON "E&xit",      ID_EXIT,     165,  75,  50, 14
+}
+
+// TODO these are not implemented!
+ID_HITSMENU MENU
+{
+    POPUP ""
+    {
+        MENUITEM "Ignore from dump...", ID_ADDIGNCODE
+        MENUITEM "Ignore from range...", ID_ADDIGNRANGE
+        MENUITEM "Clear ignores", ID_CLEARIGN
+        MENUITEM SEPARATOR
+        MENUITEM "Mark hits from dump...", ID_ADDHITSCODE
+        MENUITEM "Mark range as hit...", ID_ADDHITSRANGE
+        MENUITEM "&Clear hits", ID_CLEARHITS
+    }
+}
